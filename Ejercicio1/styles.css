@@ -99,10 +99,14 @@ button {
 }
 
 .menu-derecho i {
-  width: 40px;
-  height: 40px;
-  padding: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 2px;
   font-size: 1rem;
+  margin: 2px 2px;
   border-radius: 50%;
   cursor: pointer;
   background-color: rgb(236, 236, 236);
@@ -132,10 +136,10 @@ button {
   margin: 0px;
 }
 
-.ri-search-line {
+.fa-magnifying-glass {
   background-color: rgb(253, 56, 105);
   border-radius: 50%;
-  padding: 2% 2%;
+  padding: 1.5% 1.5%;
   color: white;
   cursor: pointer;
 }
@@ -250,3 +254,5 @@ button {
   margin: 0;
   color: grey;
 }
+
+
