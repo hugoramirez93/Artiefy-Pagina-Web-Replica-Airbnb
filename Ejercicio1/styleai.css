@@ -1,0 +1,313 @@
+/* ...existing code... */
+
+/* Reset y caja */
+:root {
+  --accent: #fd3869;
+  --muted: #e6e6e6;
+  --bg: #fff;
+  --text: #111;
+  --card-width: 80vw;
+  --max-card-height: 250px;
+  --radius: 10px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* evita scroll horizontal por 100vw */
+}
+
+/* Contenedores principales */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 10%;
+  padding: 1rem;
+}
+
+/* Header / inicio */
+.inicio {
+  display: flex;
+  position: fixed;
+  inset: 0 0 auto 0; /* top:0; left:0; right:0 */
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg);
+  z-index: 1000;
+  padding: 0.6rem 1rem;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Logo */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  width: 80px; /* coherente con svg */
+}
+.logo svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Botones y centro (consolidado) */
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: inherit;
+}
+button:focus,
+input:focus {
+  outline: 3px solid rgba(0, 0, 0, 0.08);
+  outline-offset: 2px;
+}
+
+/* grupos */
+.botones-centro {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+}
+
+/* Reutilizable para botones tipo tab */
+.boton {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* Menu derecho */
+.menu-derecho {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.menu-derecho .icon {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--muted);
+  font-size: 1rem;
+}
+
+/* Search bar principal */
+.search-bars {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: min(60rem, 90%);
+  max-width: 60rem;
+  margin: 5.2rem auto 1.5rem; /* deja espacio para header */
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  background: #fff;
+}
+
+/* Inputs dentro de search */
+.search-bars input {
+  flex: 1 1 auto;
+  border: none;
+  background: transparent;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.95rem;
+  min-width: 0; /* evita overflow en flex */
+}
+.search-bars input:focus {
+  outline: none;
+}
+
+/* icono buscar */
+.fa-magnifying-glass {
+  background-color: var(--accent);
+  color: #fff;
+  border-radius: 50%;
+  padding: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* pequeñas etiquetas dentro de search */
+.search-bars p,
+.donde,
+.fechas,
+.quien {
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+}
+
+/* Contenedor de categorías y cards */
+.container-categorias {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background: var(--bg);
+  border-top: 1px solid rgba(0, 0, 0, 0.03);
+  padding: 1rem 0 3rem;
+}
+
+.categoria {
+  width: min(90%, var(--card-width));
+}
+
+/* títulos */
+.titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+/* carousel horizontal */
+.container-cards {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  height: var(--max-card-height);
+  width: 100%;
+  margin-top: 0.8rem;
+  padding-bottom: 0.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+.container-cards::-webkit-scrollbar {
+  height: 8px;
+}
+.container-cards::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+}
+
+/* tarjetas */
+.cards {
+  flex: 0 0 150px;
+  height: 220px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.image {
+  position: relative;
+  width: 100%;
+  height: 138px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: linear-gradient(180deg, #eee, #f8f8f8);
+}
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* icono dentro de card */
+.cards i {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  font-size: 1.1rem;
+  color: #000;
+}
+
+/* textos de card */
+.cards h3 {
+  font-size: 0.85rem;
+  margin: 0;
+}
+.cards p {
+  font-size: 0.78rem;
+  margin: 0;
+  color: grey;
+}
+
+/* Utilidades */
+.hidden {
+  display: none !important;
+}
+
+/* Preferencias de reducción de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .container-cards {
+    scroll-behavior: auto;
+  }
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .botones-centro {
+    display: none;
+  } /* ocultar elementos no esenciales */
+  .search-bars {
+    width: 94%;
+    margin-top: 5.4rem;
+    padding: 0.5rem;
+  }
+  .container-cards {
+    gap: 0.6rem;
+  }
+  .cards {
+    flex: 0 0 140px;
+    height: 210px;
+  }
+  .logo {
+    width: 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bars {
+    margin-top: 4.8rem;
+    padding: 0.4rem;
+  }
+  .cards {
+    flex: 0 0 120px;
+    height: 200px;
+  }
+  .image {
+    height: 110px;
+  }
+}

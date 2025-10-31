@@ -1,10 +1,9 @@
-let heart = document.querySelector('.fa-heart');
+let heart = document.querySelectorAll('.fa-heart');
 
-function toggleHeart () {
-    heart.addEventListener("click", () => {
-        heart.classList.toggle('fa-solid');
-        heart.classList.toggle('fa-regular');
+
+heart.forEach(heartIcon => {
+    heartIcon.addEventListener("click", () => {
+        heartIcon.classList.toggle('fa-solid');
+        heartIcon.classList.toggle('fa-regular');
     });
-}
-
-toggleHeart();
+});
